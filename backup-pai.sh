@@ -3,11 +3,11 @@
 #2018-03-06
 
 #基础数据
-MYSQL_USER=                 #数据库用户名   例：dbuser
-MYSQL_PASS=                 #数据库密码     例：123456
-WEB_DATA=                   #Web文件目录    例：/var/www
-PCH_DATA=                   #如果需要排除备份某文件夹（例如缓存文件夹等）   例：/var/www/wp-content/cache
-Backup_local_DIR=           #备份文件存储位置   例：/home/backup
+MYSQL_USER=#数据库用户名   例：dbuser
+MYSQL_PASS=#数据库密码     例：123456
+WEB_DATA=#Web文件目录    例：/var/www
+PCH_DATA=#如果需要排除备份某文件夹（例如缓存文件夹等）   例：/var/www/wp-content/cache
+Backup_local_DIR=#备份文件存储位置   例：/home/backup
 
 #增量备份快照文件
 Backup_snap=${Backup_local_DIR}/Backup.snap
@@ -20,7 +20,7 @@ WebBakName=Web_$(date +%Y%m%d).tar.gz
 MD5File=MD5_$(date +%Y%m%d).md5
 
 #备份开始时将备份状态标志置为False
-echo "False" >              #备份状态标志位置 必须是可访问地址 例：/var/www/status.html
+echo "False" > #备份状态标志位置 必须是可访问地址 该行示例：echo "False" > /var/www/status.html
 rm -f ${Backup_local_DIR}/FileName
 
 
@@ -83,5 +83,5 @@ then
 fi
 echo ${MD5File} >> FileName
 chown vpsback:ftpgroup -R ${Backup_local_DIR}   #使用时将 vpsback:ftpgroup 替换成自己的FTP用户名和用户组 用户名:用户组
-echo "ok" >    #将标志位设置为ok 必须是可访问地址 例：/var/www/status.html
+echo "ok" > #将标志位设置为ok 必须是可访问地址 该行示例：echo "ok" > /var/www/status.html
 echo "Backup complete"

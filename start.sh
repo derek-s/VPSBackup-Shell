@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOCKFILE= #设置一个锁文件 路径需要带引号 例如 "/home/pi/vpsback/verify.tmp"
+LOCKFILE=#设置一个锁文件 路径需要带引号 例如 "/home/pi/vpsback/verify.tmp"
 
 trap 'echo "rm lockfile!";rm -f ${LOCKFILE}; exit' 1 2 3 9 15
 
@@ -17,4 +17,3 @@ else
 fi
 
 rm -f $LOCKFILE
-

@@ -2,12 +2,12 @@
 #树莓派下载备份、验证、删除数据
 
 #FTP工作信息
-FTPServer=      #vps地址，IP/域名
-FTPUser=        #ftp登陆用户名
-FTPPass=        #ftp登录密码
+FTPServer=#vps地址，IP/域名
+FTPUser=#ftp登陆用户名
+FTPPass=#ftp登录密码
 
 #工作路径
-BackPath=       #备份文件在树莓派上的存储路径 例：/mnt/vpsback 
+BackPath=#备份文件在树莓派上的存储路径 例：/mnt/vpsback 
 
 date >> ${BackPath}/run_log.log
 
@@ -21,14 +21,14 @@ mailcontent=Mail_$(date +%Y%m%d)
 DataBakName=Data_$(date +%Y%m%d).tar.gz
 WebBakName=Web_$(date +%Y%m%d).tar.gz
 MD5FileName=MD5_$(date +%Y%m%d).md5
-MAIL_TO=    #邮箱地址 用于接收本脚本运行日志
+MAIL_TO=#邮箱地址 用于接收本脚本运行日志
 
 date >> $mailcontent
 
 rm -f ${BackPath}/${MD5FileName}
 
 #获取远程服务器状态
-backstatus=`curl ` #curl后跟backup-pai内设置的标志位访问位置，例如 http://www.abc.com/status.html
+backstatus=`curl ` #curl后跟backup-pai内设置的标志位访问位置，例如 curl http://www.abc.com/status.html
 cd ${BackPath}
 echo $backstatus
 if [ "$backstatus" = ok ]

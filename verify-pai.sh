@@ -89,6 +89,9 @@ rm "$MD5FileName"
 END
 echo "磁盘使用情况" >> $mailcontent
 df -lh $BackPath >> $mailcontent
+if [ "$backstatus" = ok ]
+then
 mutt $MAIL_TO -i $mailcontent -s "$IDCName 树莓派备份报告"
+fi
 rm -f $mailcontent
 fi

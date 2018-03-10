@@ -31,8 +31,8 @@ rm -f ${BackPath}/${MD5FileName}
 backstatus=`curl ` #curl后跟backup-pai内设置的标志位访问位置，例如 curl http://www.abc.com/status.html
 cd ${BackPath}
 echo $backstatus
-if [ "$backstatus" = ok ]
 echo $backstatus >> $mailcontent
+if [ "$backstatus" = "ok" ]
 then
     echo "Download FileName File"
     lftp "$FTPUser:$FTPPass"@"$FTPServer" << END
@@ -89,9 +89,6 @@ rm "$MD5FileName"
 END
 echo "磁盘使用情况" >> $mailcontent
 df -lh $BackPath >> $mailcontent
-if [ "$backstatus" = ok ]
-then
 mutt $MAIL_TO -i $mailcontent -s "$IDCName 树莓派备份报告"
-fi
 rm -f $mailcontent
 fi
